@@ -18,7 +18,7 @@ class AddTodo extends StatelessWidget {
               TextField(
                 controller: titleController,
                 decoration: InputDecoration(
-                    labelText: "Todo", border: OutlineInputBorder()),
+                    labelText: "ToDo", border: OutlineInputBorder()),
               ),
               SizedBox(
                 height: 30,
@@ -38,7 +38,7 @@ class AddTodo extends StatelessWidget {
                       }
                     },
                     child: Text(
-                      "Add Todo",
+                      "Add ToDo",
                       style: TextStyle(fontSize: 20),
                     )),
               )

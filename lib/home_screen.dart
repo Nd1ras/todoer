@@ -33,7 +33,20 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemBuilder: (context, index) {
                     Todo todo = box.getAt(index);
                     return ListTile(
-                      title: Text(todo.title),
+                      title: Text(todo.title,style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: todo.isCompleted ? Colors.green : Colors.black
+                      ),),
+                      leading: Checkbox(
+                          value: todo.isCompleted,
+                          onChanged: (value) {
+                            Todo newTodo = Todo(
+                              title: todo.title,
+                              isCompleted: value!,
+                            );
+                            box.putAt(index, newTodo);
+                          }),
                     );
                   });
             }
