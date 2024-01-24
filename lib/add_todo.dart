@@ -36,6 +36,10 @@ class AddTodo extends StatelessWidget {
                         todoBox.add(newTodo);
                         Navigator.pop(context);
                       }
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        duration: Duration(milliseconds: 125),
+                        content: Text("ToDo Added Successfuly!"),
+                      ));
                     },
                     child: Text(
                       "Add ToDo",

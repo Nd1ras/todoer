@@ -63,9 +63,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         onPressed: () {
                           box.deleteAt(index);
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text("ToDo deleted Successfuly!"),
+                            duration: Duration(milliseconds: 110),
+                            content: Text("ToDo Deleted Successfuly!"),
                           ));
                         },
+                        tooltip: "Delete ToDo",
                       ),
                     );
                   });
@@ -76,7 +78,8 @@ class _HomeScreenState extends State<HomeScreen> {
           onPressed: () {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => AddTodo()));
-          }),
+          },
+          tooltip: "New ToDo"),
     );
   }
 }
