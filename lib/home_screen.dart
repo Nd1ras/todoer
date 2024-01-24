@@ -29,15 +29,23 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             } else {
               return ListView.builder(
+                  reverse: true,
+                  shrinkWrap: true,
                   itemCount: box.length,
                   itemBuilder: (context, index) {
                     Todo todo = box.getAt(index);
                     return ListTile(
-                      title: Text(todo.title,style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: todo.isCompleted ? Colors.green : Colors.black
-                      ),),
+                      title: Text(
+                        todo.title,
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color:
+                                todo.isCompleted ? Colors.green : Colors.black,
+                            decoration: todo.isCompleted
+                                ? TextDecoration.lineThrough
+                                : TextDecoration.none),
+                      ),
                       leading: Checkbox(
                           value: todo.isCompleted,
                           onChanged: (value) {
@@ -47,6 +55,18 @@ class _HomeScreenState extends State<HomeScreen> {
                             );
                             box.putAt(index, newTodo);
                           }),
+                      trailing: IconButton(
+                        icon: Icon(
+                          Icons.delete,
+                          color: Colors.red,
+                        ),
+                        onPressed: () {
+                          box.deleteAt(index);
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text("ToDo deleted Successfuly!"),
+                          ));
+                        },
+                      ),
                     );
                   });
             }
